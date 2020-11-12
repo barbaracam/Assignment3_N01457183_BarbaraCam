@@ -1,0 +1,16 @@
+﻿@model IEnumerable<SchoolProject.Models.SchoolClass>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2 class="title1">School List</h2>
+<p>This page is showing a list about all the Classes</p>
+
+<div class="containerlist">
+    <h2 class="title2">List of School Classes</h2>    
+    @foreach(var schoolclass in Model){
+    <div class="items">
+        <a href="/SchoolClass/Show/@schoolclass.SchoolClassId">@schoolclass.SchoolClassCode @schoolclass.SchoolClassName</a>
+    </div>
+        }
+</div>

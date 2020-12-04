@@ -17,11 +17,50 @@ textarea {
     max-width: 280px;
 }
 
-.nav {
-    text-align: right;
-    float:right;
+nav {
+    overflow: hidden;
+    margin-bottom:30px;
+ }
+
+.title1, .info1{
+    text-align:center;
+}
+.add_id {
+    text-align:center;   
+}
+#add_hire {
+    padding: 0 0 0 451px;
+}
+#add_salary {  
+   padding: 0 0 0 470px;
+}
+#addbutton {
+    padding: 0 0 0 555px;
+    border-radius: 3px;
     
-    color: darkred;
+}
+#buttonadd{
+    background:black;
+    color:white;
+}
+.navlink {
+    color: white;
+    float:left;
+    font-size:15px;
+    background:grey;
+    border-radius:5px;
+}
+.dellink {
+    float:right;
+    color:red;
+}
+.delbutton {
+    background: white;
+    display: block;
+    margin: 0 auto;
+    color: red;
+    border: 2px solid red;
+    border-radius: 4px;
 }
 
 .containerlist, .containershow{

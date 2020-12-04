@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using SchoolProject.Models;
 using MySql.Data.MySqlClient;
+using System.Web.Http.Cors;
 
 
 namespace SchoolProject.Controllers
@@ -22,6 +23,7 @@ namespace SchoolProject.Controllers
 
         [HttpGet]
         [Route("api/TeacherData/ListTeachers/{SearchKey?}")]
+        
         public IEnumerable<Teacher> ListTeachers(string Searchkey = null)
         {
             // Create a connection
@@ -49,8 +51,8 @@ namespace SchoolProject.Controllers
             {
                 //Acces column information by the column name as an index
                 int TeacherId = (int)ResultSet["teacherid"];
-                string TeacherFname = (string)ResultSet["teacherfname"];
-                string TeacherLname = (string)ResultSet["teacherlname"];
+                string TeacherFname = ResultSet["teacherfname"].ToString();
+                string TeacherLname = ResultSet["teacherlname"].ToString();
                 DateTime TeacherHireDate = (DateTime)ResultSet["hiredate"];
                 decimal TeacherSalary = (decimal)ResultSet["salary"];
                     //New instation of the teacher class
@@ -94,8 +96,8 @@ namespace SchoolProject.Controllers
             {
                 //Acces information by id(index)
                 int TeacherId = (int)ResultSet["teacherid"];
-                string TeacherFname = (string)ResultSet["teacherfname"];
-                string TeacherLname = (string)ResultSet["teacherlname"];
+                string TeacherFname = ResultSet["teacherfname"].ToString();
+                string TeacherLname = ResultSet["teacherlname"].ToString();
                 DateTime TeacherHireDate = (DateTime)ResultSet["hiredate"];
                 Decimal TeacherSalary = (decimal)ResultSet["salary"];
 
@@ -113,6 +115,64 @@ namespace SchoolProject.Controllers
             //Return information about the specific teacher
         }
 
+        /// This controller will access the Teacher table from the school database and...
+        /// <summary>
+        /// Delete the Teacher chosen by the user through the ID
+        /// </summary>
+       /// <example>Post: /api/TeacherData/DeleteTeacher/1</example>
+
+        [HttpPost]
+        public void DeleteTeacher (int id)
+        {
+            // Create a connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            // Create a connection between the server and the database
+            Conn.Open();
+
+            //Set a new command for the teacher database(query)
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            // SQL for the teachers table
+            cmd.CommandText = "Delete from teachers where teacherid=@id";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+          
+        }
+
+        /// This controller will access the Teacher table from the school database and...
+        /// <summary>
+        /// Add a new Teacher
+        /// </summary>
+       
+        [HttpPost]
+        public void AddTeacher([FromBody]Teacher NewTeacher)
+        {
+            // Create a connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            // Create a connection between the server and the database
+            Conn.Open();
+
+            //Set a new command for the teacher database(query)
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            // SQL for the teachers table
+            cmd.CommandText = "Insert into teachers (teacherfname, teacherlname, hiredate, salary ) values (@TeacherFname, @TeacherLname, @TeacherHireDate, @TeacherSalary)";
+            cmd.Parameters.AddWithValue("@TeacherFname", NewTeacher.TeacherFname);
+            cmd.Parameters.AddWithValue("@TeacherLname", NewTeacher.TeacherLname);
+            cmd.Parameters.AddWithValue("@TeacherHireDate", NewTeacher.TeacherHireDate);
+            cmd.Parameters.AddWithValue("@TeacherSalary", NewTeacher.TeacherSalary);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+        }
 
 
     }

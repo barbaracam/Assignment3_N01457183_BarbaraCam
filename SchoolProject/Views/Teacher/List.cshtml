@@ -4,13 +4,17 @@
 }
 
 <h2 class="title1">School List</h2>
-<p>This page is showing a list about all the teachers</p>
+<p class="info1">This page is showing a list about all the teachers</p>
 
 <div class="containerlist">
+
+    <nav>
+        <a class="navlink" href="/Teacher/Add">New Teacher</a>
+    </nav>
     <h2 class="title2">List Teachers</h2>
     <form action="/Teacher/List" method="Get">
-    <input type="text" name="SearchKey" />
-    <input type="submit" value="Search" />
+        <input type="text" name="SearchKey" />
+        <input type="submit" value="Search" />
     </form>
     @foreach (var teacher in Model)
     {

@@ -3,15 +3,15 @@
     ViewBag.Title = "Show";
 }
 
-<a class="nav" href="/Teacher/List">Back to Teachers</a>
 
 <div class="containershow">
-    <h2 class="title2">Showing Teacher</h2>
-         
-        <p>Teacher: @Model.TeacherFname @Model.TeacherLname</p>
-
-        <p>Hire Date: @Model.TeacherHireDate</p>
-        <p>Salary: @Model.TeacherSalary</p>
+<nav>
+    <a class="navlink" href="/Teacher/List">Back to Teachers</a>
+    <a class="dellink" href="/Teacher/DeleteConfirm/@Model.TeacherId">Delete</a>
+</nav>
+<h2 class="title2">@Model.TeacherFname @Model.TeacherLname</h2>             
+        <p style="font-style:italic;">Hire Date: @Model.TeacherHireDate.ToString("yyyy-MM-dd HH:mm:ss")</p>
+        <p>Salary: $@Model.TeacherSalary</p>
 </div>
 
 

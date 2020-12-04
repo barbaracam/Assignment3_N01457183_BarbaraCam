@@ -16,5 +16,7 @@ namespace SchoolProject.Models
         public DateTime TeacherHireDate;
         public decimal TeacherSalary;
 
+        public Teacher() { }
+
     }
 }

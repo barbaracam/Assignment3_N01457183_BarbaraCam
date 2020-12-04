@@ -216,3 +216,6 @@ C:\Users\camba\OneDrive\Desktop\Web_Application\Assignment3_N01457183_BarbaraCam
 C:\Users\camba\OneDrive\Desktop\Web_Application\Assignment3_N01457183_BarbaraCam_5101_B\SchoolProject\SchoolProject\obj\Debug\SchoolProject.csproj.CopyComplete
 C:\Users\camba\OneDrive\Desktop\Web_Application\Assignment3_N01457183_BarbaraCam_5101_B\SchoolProject\SchoolProject\obj\Debug\SchoolProject.dll
 C:\Users\camba\OneDrive\Desktop\Web_Application\Assignment3_N01457183_BarbaraCam_5101_B\SchoolProject\SchoolProject\obj\Debug\SchoolProject.pdb
+C:\Users\camba\OneDrive\Desktop\Web_Application\Assignment3_N01457183_BarbaraCam_5101_B\SchoolProject\SchoolProject\bin\System.Web.Cors.dll
+C:\Users\camba\OneDrive\Desktop\Web_Application\Assignment3_N01457183_BarbaraCam_5101_B\SchoolProject\SchoolProject\bin\System.Web.Http.Cors.dll
+C:\Users\camba\OneDrive\Desktop\Web_Application\Assignment3_N01457183_BarbaraCam_5101_B\SchoolProject\SchoolProject\bin\System.Web.Http.Cors.xml

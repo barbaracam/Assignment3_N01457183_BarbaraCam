@@ -154,6 +154,7 @@ namespace SchoolProject.Controllers
         {
             // Create a connection
             MySqlConnection Conn = School.AccessDatabase();
+            
 
             // Create a connection between the server and the database
             Conn.Open();
@@ -167,6 +168,31 @@ namespace SchoolProject.Controllers
             cmd.Parameters.AddWithValue("@TeacherLname", NewTeacher.TeacherLname);
             cmd.Parameters.AddWithValue("@TeacherHireDate", NewTeacher.TeacherHireDate);
             cmd.Parameters.AddWithValue("@TeacherSalary", NewTeacher.TeacherSalary);
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close();
+        }
+
+        public void UpdateTeacher(int id, [FromBody]Teacher TeacherInfo)
+        {
+            // Create a connection
+            MySqlConnection Conn = School.AccessDatabase();            
+
+            // Create a connection between the server and the database
+            Conn.Open();
+
+            //Set a new command for the teacher database(query)
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            // SQL for the teachers table
+            cmd.CommandText = "update teachers set teacherfname=@TeacherFname, teacherlname=@TeacherLname, hiredate=@TeacherHireDate, salary=@TeacherSalary where teacherid=@TeacherId";
+            cmd.Parameters.AddWithValue("@TeacherFname", TeacherInfo.TeacherFname);
+            cmd.Parameters.AddWithValue("@TeacherLname", TeacherInfo.TeacherLname);
+            cmd.Parameters.AddWithValue("@TeacherHireDate", TeacherInfo.TeacherHireDate);
+            cmd.Parameters.AddWithValue("@TeacherSalary", TeacherInfo.TeacherSalary);
+            cmd.Parameters.AddWithValue("@TeacherId", id);
             cmd.Prepare();
 
             cmd.ExecuteNonQuery();

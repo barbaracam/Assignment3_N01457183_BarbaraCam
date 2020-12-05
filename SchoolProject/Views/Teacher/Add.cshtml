@@ -4,8 +4,11 @@
 }
 
 
-
+<div id="containershow">
 <h2>Adding a New Teacher</h2>
+<nav>
+    <a class="navlink" href="/Teacher/List">Back To Teachers</a>
+</nav>
 <form method="Post" action="/Teacher/Create" onsubmit="return validateTeacher();">
     <div class="add_id">
         <label for="TeacherFname">First Name:</label>
@@ -30,3 +33,4 @@
         <input id="buttonadd" type="submit" value="Create Teacher" />
     </div>
 </form>
+</div>
